@@ -29,4 +29,9 @@ class TestPerson < Minitest::Test
     person = Person.new(@people.first)
     assert_equal "Luke", person.first_name
   end
+
+  def test_initializes_with_last_name
+    person = Person.new(@people.first)
+    assert_equal "Skywalker", person.last_name
+  end
 end
