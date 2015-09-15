@@ -1,6 +1,6 @@
 require "minitest/autorun"
-require "minitest/reporters"
-Minitest::Reporters.use!
+# require "minitest/reporters"
+# Minitest::Reporters.use!
 
 class Person
   attr_reader :line
@@ -10,6 +10,7 @@ class Person
   end
 
   def first_name
+    line.split.first
   end
 end
 
