@@ -9,6 +9,10 @@ class Person
     @last_name = match[2]
     @email = match[3]
   end
+
+  def can_be_santa_of?(other)
+    last_name != other.last_name
+  end
 end
 
 class TestPerson < Minitest::Test
@@ -30,5 +34,15 @@ class TestPerson < Minitest::Test
 
   def test_raises_error_for_invalid_line
     assert_raises { Person.new("Person") }
+  end
+
+  def test_cannot_be_santa_of
+    bad_santa = Person.new("Leia Skywalker <leia@theforce.net>")
+    assert !@person.can_be_santa_of?(bad_santa)
+  end
+
+  def test_can_be_santa_of
+    santa = Person.new("Darth Vader <darthvader@theforce.net>")
+    assert @person.can_be_santa_of?(santa)
   end
 end
